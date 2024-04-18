@@ -1,0 +1,22 @@
+#1
+select album.album_id,album.name,sum(track.price),avg(track.duration),count(*) from album inner join track on album.album_id = track.album_id group by album.album_id order by sum(price) desc;
+
+#2
+select track_id,sum(quantity) as a from factor group by track_id having sum (quantity)>5;
+
+#3
+select artist.first_name,artist.last_name from album inner join artist on artist.artist_id=album.artist_id inner join track on album.album_id=track.album_id where style='rock' group by first_name,last_name having count(style)>2;
+
+#4
+select first_name,last_name,max(factor_date) from person inner join factor on person.person_id=factor.person_id group by first_name,last_name;
+
+#5
+select a.album_id,count(*) from (select album.album_id,count(*) from factor inner join track on factor.track_id=track.track_id inner join album on track.album_id=album.album_id group by album.album_id,track.track_id) as a group by a.album_id having count(*)=1;
+
+
+
+
+
+
+
+

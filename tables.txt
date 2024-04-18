@@ -1,0 +1,15 @@
+
+#track
+create table track (track_id serial primary key,album_id int not null,
+FOREIGN KEY (album_id) REFERENCES album(album_id),name varchar(20) not null,
+format varchar(4)not null, size int not null,created_date date not null,
+style varchar(20) not null, price int not null);
+
+#person
+create table person (person_id serial primary key,first_name varchar(20) not null,
+last_name varchar(20) not null);
+
+#factor
+create table factor (factor_id serial primary key, track_id int not null,foreign key (track_id) references track(track_id),person_id int not null,foreign key (person_id) references person(person_id), factor_date now() not null,quantity int not null, total_price  not null  );
+
+
